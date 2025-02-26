@@ -1,5 +1,7 @@
-import Accordion from "./Accordion/Accordion";
+//import Accordion from "./Accordion/Accordion";
 import css from "./App.module.css";
+import Reader from "./Reader/Reader";
+import articles from "../components/articles.json";
 
 const accordionItems = [
   {
@@ -36,7 +38,8 @@ export default function App() {
     <div className={css.container}>
       <h1 className={css.title}>State in React</h1>
 
-      <Accordion items={accordionItems} />
+      <Reader items={articles} />
+      {/*<Accordion items={accordionItems} />*/}
     </div>
   );
 }
