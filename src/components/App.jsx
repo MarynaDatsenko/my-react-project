@@ -5,16 +5,50 @@
 //import { useEffect, useState } from "react";
 //import LoginForm from "./LoginForm";
 //import SearchBar from "./SearchBar";
-import LangSwitcher from "./LangSwitcher";
+//import LangSwitcher from "./LangSwitcher";
 import { useState } from "react";
-import "./styles.css";
+//import "./styles.css";
 
 export default function App() {
-  const [lang, setLang] = useState("uk");
+  const [coffeeSize, setCoffeeSize] = useState("sm");
+
+  const handleChange = (evt) => {
+    setCoffeeSize(evt.target.value);
+  };
+
   return (
     <>
-      <p>Selected language: {lang} </p>
-      <LangSwitcher value={lang} onSelect={setLang} />
+      <h1>Select coffee size</h1>
+      <label>
+        <input
+          type="radio"
+          name="coffeeSize"
+          value="sm"
+          checked={coffeeSize === "sm"}
+          onChange={handleChange}
+        />
+        Small
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="coffeeSize"
+          value="md"
+          checked={coffeeSize === "md"}
+          onChange={handleChange}
+        />
+        Medium
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="coffeeSize"
+          value="lg"
+          checked={coffeeSize === "lg"}
+          onChange={handleChange}
+        />
+        Large
+      </label>
     </>
   );
 }
