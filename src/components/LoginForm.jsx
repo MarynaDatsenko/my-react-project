@@ -1,17 +1,43 @@
-import { useId } from "react";
+import { useState } from "react";
 
 const LoginForm = () => {
-  const loginId = useId();
-  const passwordId = useId();
+  const [values, setValues] = useState({
+    login: "",
+    password: "",
+  });
+
+  const handleChange = (evt) => {
+    setValues({
+      ...values,
+      [evt.target.name]: evt.target.value,
+    });
+  };
+
+  const handleSumit = (evt) => {
+    evt.preventDefault();
+
+    console.log(values);
+
+    setValues({
+      login: "",
+      password: "",
+    });
+  };
 
   return (
     <form>
-      <label htmlFor={loginId}>Login</label>
-      <input type="text" name="login" id={loginId} />
-
-      <label htmlFor={passwordId}>Password</label>
-      <input type="text" name="password" id={passwordId} />
-
+      <input
+        type="text"
+        name="login"
+        value={values.login}
+        onChange={handleChange}
+      />
+      <input
+        type="password"
+        name="password"
+        value={values.password}
+        onChange={handleChange}
+      />
       <button type="submit">Login</button>
     </form>
   );
