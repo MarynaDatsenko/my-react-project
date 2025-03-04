@@ -1,54 +1,26 @@
-//import Accordion from "./Accordion/Accordion";
-//import css from "./App.module.css";
-//import Reader from "./Reader/Reader";
-//import articles from "../components/articles.json";
-//import { useEffect, useState } from "react";
-//import LoginForm from "./LoginForm";
-//import SearchBar from "./SearchBar";
-//import LangSwitcher from "./LangSwitcher";
 import { useState } from "react";
-//import "./styles.css";
 
 export default function App() {
-  const [coffeeSize, setCoffeeSize] = useState("sm");
+  const [hasAccepted, setHasAccepted] = useState(false);
 
   const handleChange = (evt) => {
-    setCoffeeSize(evt.target.value);
+    setHasAccepted(evt.target.checked);
   };
 
   return (
-    <>
-      <h1>Select coffee size</h1>
+    <div>
       <label>
         <input
-          type="radio"
-          name="coffeeSize"
-          value="sm"
-          checked={coffeeSize === "sm"}
+          type="checkbox"
+          name="terms"
+          checked={hasAccepted}
           onChange={handleChange}
         />
-        Small
+        I accept terms and conditions
       </label>
-      <label>
-        <input
-          type="radio"
-          name="coffeeSize"
-          value="md"
-          checked={coffeeSize === "md"}
-          onChange={handleChange}
-        />
-        Medium
-      </label>
-      <label>
-        <input
-          type="radio"
-          name="coffeeSize"
-          value="lg"
-          checked={coffeeSize === "lg"}
-          onChange={handleChange}
-        />
-        Large
-      </label>
-    </>
+      <button type="button" disabled={!hasAccepted}>
+        Proceed
+      </button>
+    </div>
   );
 }
