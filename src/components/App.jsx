@@ -1,10 +1,11 @@
 //import { useState } from "react";
-import LoginForm from "./LoginForm";
+//import LoginForm from "./LoginForm";
+import FeedbackForm from "./FeedbackForm";
 
 export default function App() {
   return (
     <div>
-      <LoginForm />
+      <FeedbackForm />
     </div>
   );
 }
