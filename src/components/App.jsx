@@ -1,36 +1,26 @@
 import { useState } from "react";
-//import axios from "axios";
-import ArticleList from "./ArticleList";
-import { fetchArticlesWithTopic } from "../articles-api";
-import { SearchForm } from "./SearchForm";
+import { useMemo } from "react";
 
 const App = () => {
-  const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [planets, setPlanets] = useState(["Earth", "Mars", "Jupiter", "Venus"]);
+  const [query, setQuery] = useState("");
+  const [clicks, setClicks] = useState(0);
 
-  const handleSearch = async (topic) => {
-    try {
-      setArticles([]);
-      setError(false);
-      setLoading(true);
-      const data = await fetchArticlesWithTopic(topic);
-      setArticles(data);
-    } catch (error) {
-      setError(true);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const filteredPlanets = useMemo(() =>
+    planets.filter((planet) => planet.includes(query), [planets, query])
+  );
 
   return (
-    <div>
-      <h1>Latest articles</h1>
-      <SearchForm onSearch={handleSearch} />
-      {loading && <Loader />}
-      {error && <Error />}
-      {articles.length > 0 && <ArticleList items={articles} />}
-    </div>
+    <>
+      <button onClick={() => setClicks(clicks + 1)}>
+        Number of clicks: {clicks}
+      </button>
+      <ul>
+        {filteredPlanets.map((planet) => (
+          <li key={planet}>{planet}</li>
+        ))}
+      </ul>
+    </>
   );
 };
 
