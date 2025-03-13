@@ -1,7 +1,10 @@
-import Player from "./Player";
+import { UserMenu } from "./UserMenu";
 
-const App = () => {
-  return <Player source="http://media.w3.org/2010/05/sintel/trailer.mp4" />;
-};
-
-export default App;
+export default function App() {
+  return (
+    <div>
+      <h1>Context example</h1>
+      <UserMenu />
+    </div>
+  );
+}
