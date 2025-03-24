@@ -1,15 +1,14 @@
+import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import "modern-normalize";
+import { App } from "./App";
 import "./index.css";
-import App from "./components/App";
-import { UserProvider } from "./userContext";
-
-const initialUserValue = {
-  username: "Mango",
-  isLoggedIn: true,
-};
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <UserProvider value={initialUserValue}>
-    <App />
-  </UserProvider>
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
 );
